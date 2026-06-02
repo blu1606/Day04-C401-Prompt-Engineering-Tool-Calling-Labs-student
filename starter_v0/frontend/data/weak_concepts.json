@@ -1,0 +1,14 @@
+[
+  {
+    "concept": "agentic_loops",
+    "average_mastery": 47.5,
+    "students_struggling_count": 4,
+    "severity": "high"
+  },
+  {
+    "concept": "reasoning",
+    "average_mastery": 55.7,
+    "students_struggling_count": 3,
+    "severity": "medium"
+  }
+]
