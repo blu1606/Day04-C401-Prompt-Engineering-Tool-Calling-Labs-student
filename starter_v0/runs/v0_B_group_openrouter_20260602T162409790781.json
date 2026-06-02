@@ -1,0 +1,874 @@
+{
+  "run_id": "v0_B_group_openrouter_20260602T162409790781",
+  "version": "v0",
+  "artifact_version": "v0+pb77defa16bd6+t25b0fd228a32",
+  "prompt_hash": "b77defa16bd6f372c3adfc3139c3c990247e0e326adbee5d1827ef56cbe4f886",
+  "tools_hash": "25b0fd228a3206a250ce3bcb45325ff062ddf1c323076c4b0c1f4fedab4154f0",
+  "phase": "B",
+  "suite": "group",
+  "provider": "openrouter",
+  "model": "openai/gpt-4o-mini",
+  "system_prompt": "D:\\Project\\Vin_AI\\Lab 4\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\system_prompt.md",
+  "tools": "D:\\Project\\Vin_AI\\Lab 4\\Day04-C401-Prompt-Engineering-Tool-Calling-Labs-student\\starter_v0\\artifacts\\tools.yaml",
+  "eval_cases": "data\\eval_group.json",
+  "dataset_id": "day04_v2_research_group",
+  "dataset_role": "group",
+  "description": "Custom test cases for weather_by_region and trend_analyzer.",
+  "generated_at": "2026-06-02T16:24:09",
+  "summary": {
+    "total_cases": 10,
+    "measured_cases": 10,
+    "provider_error_cases": 0,
+    "passed_cases": 10,
+    "case_accuracy": 1.0,
+    "tool_routing_accuracy": 1.0,
+    "argument_accuracy": 1.0,
+    "multiturn_accuracy": 1.0,
+    "failure_counts": {},
+    "observed_mismatch_counts": {}
+  },
+  "results": [
+    {
+      "id": "G01_weather_routing",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "weather_routing",
+        "difficulty": "easy",
+        "what_it_tests": "Check if agent calls weather_by_region for a specified location"
+      },
+      "input": "Thời tiết Hà Nội hôm nay thế nào?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "Hà Nội"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "Hà Nội"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "weather_by_region",
+          "args": {
+            "region": "Hà Nội"
+          },
+          "result": {
+            "tool": "weather_by_region",
+            "region": "Hà Nội",
+            "temperature": "N/A",
+            "condition": "{'location': {'name': 'Province De Hà Tĩnh', 'region': '', 'country': 'Vietnam', 'lat': 18.3333, 'lon': 105.9, 'tz_id': 'Asia/Bangkok', 'localtime_epoch': 1780392208, 'localtime': '2026-06-02 16:23'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 16:00', 'temp_c': 34.0, 'temp_f': 93.1, 'is_day': 1, 'condition': {'text': 'Patchy rain nearby', 'icon': '//cdn.weatherapi.com/weather/64x64/day/176.png', 'code': 1063}, 'wind_mph': 9.8, 'wind_kph': 15.8, 'wind_degree': 110, 'wind_dir': 'ESE', 'pressure_mb': 1002.0, 'pressure_in': 29.58, 'precip_mm': 0.05, 'precip_in': 0.0, 'humidity': 59, 'cloud': 81, 'feelslike_c': 41.5, 'feelslike_f': 106.7, 'windchill_c': 34.0, 'windchill_f': 93.1, 'heatindex_c': 41.6, 'heatindex_f': 107.0, 'dewpoint_c': 24.7, 'dewpoint_f': 76.5, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 2.5, 'gust_mph': 11.3, 'gust_kph': 18.2, 'will_it_rain': 1, 'chance_of_rain': 73, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+            "web_search_results": [
+              {
+                "title": "Weather in Hà Nội",
+                "url": "https://www.weatherapi.com/",
+                "source": "weatherapi.com",
+                "summary": "{'location': {'name': 'Province De Hà Tĩnh', 'region': '', 'country': 'Vietnam', 'lat': 18.3333, 'lon': 105.9, 'tz_id': 'Asia/Bangkok', 'localtime_epoch': 1780392208, 'localtime': '2026-06-02 16:23'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 16:00', 'temp_c': 34.0, 'temp_f': 93.1, 'is_day': 1, 'condition': {'text': 'Patchy rain nearby', 'icon': '//cdn.weatherapi.com/weather/64x64/day/176.png', 'code': 1063}, 'wind_mph': 9.8, 'wind_kph': 15.8, 'wind_degree': 110, 'wind_dir': 'ESE', 'pressure_mb': 1002.0, 'pressure_in': 29.58, 'precip_mm': 0.05, 'precip_in': 0.0, 'humidity': 59, 'cloud': 81, 'feelslike_c': 41.5, 'feelslike_f': 106.7, 'windchill_c': 34.0, 'windchill_f': 93.1, 'heatindex_c': 41.6, 'heatindex_f': 107.0, 'dewpoint_c': 24.7, 'dewpoint_f': 76.5, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 2.5, 'gust_mph': 11.3, 'gust_kph': 18.2, 'will_it_rain': 1, 'chance_of_rain': 73, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+                "score": 0.9101923
+              },
+              {
+                "title": "Dự báo thời tiết sáng | 02/06/2026 - Hanoionline.vn",
+                "url": "https://hanoionline.vn/du-bao-thoi-tiet-sang-02062026-401633.htm",
+                "source": "hanoionline.vn",
+                "summary": "Chiều tối và đêm nay, Hà Nội và Bắc Bộ chủ yếu ít mưa. Nhiệt độ giảm nhẹ còn 27-29 độ. Độ ẩm từ 73-91%. Dự báo thời tiết sáng | 01/06/2026 · Dự báo thời tiết",
+                "score": 0.8627572
+              },
+              {
+                "title": "Weather forecast today June 2 for tourists exploring the Northwest",
+                "url": "https://news.laodong.vn/du-lich/cong-dong/du-bao-thoi-tiet-hom-nay-26-danh-cho-du-khach-kham-pha-tay-bac-1712148.html",
+                "source": "news.laodong.vn",
+                "summary": "Weather forecast for tomorrow June 2nd, Hanoi in the late afternoon and night with showers and thunderstorms in some places; hot sunny during the day, intense",
+                "score": 0.8106142
+              }
+            ],
+            "source": "Tavily Web Search (Fallback)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G02_weather_missing_region",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "weather_missing_region",
+        "difficulty": "medium",
+        "what_it_tests": "Check if agent calls clarify when region is missing"
+      },
+      "input": "Thời tiết hôm nay thế nào?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "response_type": "text"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "clarify",
+            "args": {
+              "question": "Bạn có thể cho tôi biết địa điểm cụ thể mà bạn muốn kiểm tra thời tiết không?",
+              "response_type": "text"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "clarify",
+          "args": {
+            "question": "Bạn có thể cho tôi biết địa điểm cụ thể mà bạn muốn kiểm tra thời tiết không?",
+            "response_type": "text"
+          },
+          "result": {
+            "tool": "ask_user",
+            "question": "Bạn có thể cho tôi biết địa điểm cụ thể mà bạn muốn kiểm tra thời tiết không?",
+            "response_type": "text",
+            "options": [],
+            "awaiting_user": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "G03_trend_analyzer_routing",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "trend_analyzer_routing",
+        "difficulty": "hard",
+        "what_it_tests": "Check if agent calls trend_analyzer for analyzing tweets context"
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm kiếm các bài đăng trên Twitter nói về OpenAI"
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi đã tìm thấy một số bài đăng nói về OpenAI trên Twitter."
+        },
+        {
+          "role": "user",
+          "content": "Hãy phân tích xu hướng, từ khóa và sentiment của các bài đăng này."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "trend_analyzer",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "trend_analyzer",
+            "args": {
+              "data": "Tôi đã tìm thấy một số bài đăng nói về OpenAI trên Twitter."
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "trend_analyzer",
+          "args": {
+            "data": "Tôi đã tìm thấy một số bài đăng nói về OpenAI trên Twitter."
+          },
+          "result": {
+            "tool": "trend_analyzer",
+            "trend_analysis": {
+              "trending_topics": [
+                "tim",
+                "thay",
+                "bai",
+                "ang",
+                "noi",
+                "openai",
+                "tren",
+                "twitter"
+              ],
+              "keywords": [
+                "tim",
+                "thay",
+                "bai",
+                "ang",
+                "noi",
+                "openai",
+                "tren",
+                "twitter"
+              ],
+              "sentiment": "Neutral",
+              "sentiment_score": {
+                "positive": 0,
+                "negative": 0
+              },
+              "summary": "Main keywords/topics: 'tim', 'thay', 'bai', 'ang', 'noi'. Sentiment is Neutral (positive: 0, negative: 0)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "G04_weather_english_routing",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "weather_routing_english",
+        "difficulty": "easy",
+        "what_it_tests": "Check if agent calls weather_by_region for a specified location in English"
+      },
+      "input": "What is the weather like in New York today?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "New York"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "New York"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "weather_by_region",
+          "args": {
+            "region": "New York"
+          },
+          "result": {
+            "tool": "weather_by_region",
+            "region": "New York",
+            "temperature": "N/A",
+            "condition": "{'location': {'name': 'New York', 'region': 'New York', 'country': 'United States of America', 'lat': 40.7142, 'lon': -74.0064, 'tz_id': 'America/New_York', 'localtime_epoch': 1780392224, 'localtime': '2026-06-02 05:23'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 05:00', 'temp_c': 9.9, 'temp_f': 49.8, 'is_day': 0, 'condition': {'text': 'Clear', 'icon': '//cdn.weatherapi.com/weather/64x64/night/113.png', 'code': 1000}, 'wind_mph': 2.7, 'wind_kph': 4.3, 'wind_degree': 303, 'wind_dir': 'WNW', 'pressure_mb': 1022.0, 'pressure_in': 30.17, 'precip_mm': 0.0, 'precip_in': 0.0, 'humidity': 90, 'cloud': 1, 'feelslike_c': 5.1, 'feelslike_f': 41.2, 'windchill_c': 9.3, 'windchill_f': 48.7, 'heatindex_c': 9.9, 'heatindex_f': 49.8, 'dewpoint_c': 8.1, 'dewpoint_f': 46.5, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 0.0, 'gust_mph': 3.9, 'gust_kph': 6.3, 'will_it_rain': 0, 'chance_of_rain': 6, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+            "web_search_results": [
+              {
+                "title": "Weather in New York",
+                "url": "https://www.weatherapi.com/",
+                "source": "weatherapi.com",
+                "summary": "{'location': {'name': 'New York', 'region': 'New York', 'country': 'United States of America', 'lat': 40.7142, 'lon': -74.0064, 'tz_id': 'America/New_York', 'localtime_epoch': 1780392224, 'localtime': '2026-06-02 05:23'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 05:00', 'temp_c': 9.9, 'temp_f': 49.8, 'is_day': 0, 'condition': {'text': 'Clear', 'icon': '//cdn.weatherapi.com/weather/64x64/night/113.png', 'code': 1000}, 'wind_mph': 2.7, 'wind_kph': 4.3, 'wind_degree': 303, 'wind_dir': 'WNW', 'pressure_mb': 1022.0, 'pressure_in': 30.17, 'precip_mm': 0.0, 'precip_in': 0.0, 'humidity': 90, 'cloud': 1, 'feelslike_c': 5.1, 'feelslike_f': 41.2, 'windchill_c': 9.3, 'windchill_f': 48.7, 'heatindex_c': 9.9, 'heatindex_f': 49.8, 'dewpoint_c': 8.1, 'dewpoint_f': 46.5, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 0.0, 'gust_mph': 3.9, 'gust_kph': 6.3, 'will_it_rain': 0, 'chance_of_rain': 6, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+                "score": 0.6109089
+              },
+              {
+                "title": "Weather forecast for June 2nd: Summer 2026 will be ... - YouTube",
+                "url": "https://www.youtube.com/watch?v=gxuiu0fpC0g",
+                "source": "youtube.com",
+                "summary": "Tin thời tiết | Nắng nóng tăng nhiệt ở miền Bắc, miền Nam mưa dông diện rộng Trung tâm Dự báo Khí tượng Thủy văn Quốc gia đưa ra thông tin dự báo thời tiết",
+                "score": 0.47913864
+              },
+              {
+                "title": "Weather forecast 02/06/2026 08:00 | TV Republika - YouTube",
+                "url": "https://www.youtube.com/watch?v=JZs1_hc-KKc",
+                "source": "youtube.com",
+                "summary": "http://bit.ly/Subskrybuj_TV_Republika - subskrybuj nasz kanał i oglądaj codziennie wiadomości z Polski i ze Świata oraz wszystkie nasze programy!",
+                "score": 0.33287454
+              }
+            ],
+            "source": "Tavily Web Search (Fallback)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G05_trend_analyzer_direct_data",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "trend_analyzer_direct_data",
+        "difficulty": "medium",
+        "what_it_tests": "Check if agent calls trend_analyzer when data is provided directly in the query"
+      },
+      "input": "Hãy phân tích xu hướng và sentiment của bài viết sau: 'Trí tuệ nhân tạo đang thay đổi thế giới. Đây là một cơ hội tuyệt vời.'",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "trend_analyzer",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "trend_analyzer",
+            "args": {
+              "data": "Trí tuệ nhân tạo đang thay đổi thế giới. Đây là một cơ hội tuyệt vời."
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "trend_analyzer",
+          "args": {
+            "data": "Trí tuệ nhân tạo đang thay đổi thế giới. Đây là một cơ hội tuyệt vời."
+          },
+          "result": {
+            "tool": "trend_analyzer",
+            "trend_analysis": {
+              "trending_topics": [
+                "tri",
+                "tue",
+                "nhan",
+                "tao",
+                "ang",
+                "thay",
+                "gioi",
+                "hoi"
+              ],
+              "keywords": [
+                "tri",
+                "tue",
+                "nhan",
+                "tao",
+                "ang",
+                "thay",
+                "gioi",
+                "hoi"
+              ],
+              "sentiment": "Positive",
+              "sentiment_score": {
+                "positive": 1,
+                "negative": 0
+              },
+              "summary": "Main keywords/topics: 'tri', 'tue', 'nhan', 'tao', 'ang'. Sentiment is Positive (positive: 1, negative: 0)."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "G06_weather_parallel",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": false,
+      "metadata": {
+        "skill": "weather_parallel_routing",
+        "difficulty": "hard",
+        "what_it_tests": "Check if agent calls weather_by_region in parallel for multiple locations"
+      },
+      "input": "Thời tiết ở Đà Nẵng và Nha Trang hôm nay ra sao?",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "Đà Nẵng"
+            }
+          },
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "Nha Trang"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "Đà Nẵng"
+            }
+          },
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "Nha Trang"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "weather_by_region",
+          "args": {
+            "region": "Đà Nẵng"
+          },
+          "result": {
+            "tool": "weather_by_region",
+            "region": "Đà Nẵng",
+            "temperature": "N/A",
+            "condition": "{'location': {'name': 'Đà Nẵng', 'region': '', 'country': 'Vietnam', 'lat': 17.8167, 'lon': 105.9, 'tz_id': 'Asia/Bangkok', 'localtime_epoch': 1780392235, 'localtime': '2026-06-02 16:23'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 16:00', 'temp_c': 25.3, 'temp_f': 77.6, 'is_day': 1, 'condition': {'text': 'Patchy light rain', 'icon': '//cdn.weatherapi.com/weather/64x64/day/293.png', 'code': 1180}, 'wind_mph': 2.2, 'wind_kph': 3.6, 'wind_degree': 280, 'wind_dir': 'W', 'pressure_mb': 1004.0, 'pressure_in': 29.65, 'precip_mm': 1.47, 'precip_in': 0.06, 'humidity': 80, 'cloud': 86, 'feelslike_c': 22.0, 'feelslike_f': 71.6, 'windchill_c': 25.4, 'windchill_f': 77.6, 'heatindex_c': 27.5, 'heatindex_f': 81.6, 'dewpoint_c': 21.6, 'dewpoint_f': 70.9, 'vis_km': 9.0, 'vis_miles': 5.0, 'uv': 0.4, 'gust_mph': 6.7, 'gust_kph': 10.8, 'will_it_rain': 1, 'chance_of_rain': 78, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+            "web_search_results": [
+              {
+                "title": "Weather in Đà Nưng",
+                "url": "https://www.weatherapi.com/",
+                "source": "weatherapi.com",
+                "summary": "{'location': {'name': 'Đà Nẵng', 'region': '', 'country': 'Vietnam', 'lat': 17.8167, 'lon': 105.9, 'tz_id': 'Asia/Bangkok', 'localtime_epoch': 1780392235, 'localtime': '2026-06-02 16:23'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 16:00', 'temp_c': 25.3, 'temp_f': 77.6, 'is_day': 1, 'condition': {'text': 'Patchy light rain', 'icon': '//cdn.weatherapi.com/weather/64x64/day/293.png', 'code': 1180}, 'wind_mph': 2.2, 'wind_kph': 3.6, 'wind_degree': 280, 'wind_dir': 'W', 'pressure_mb': 1004.0, 'pressure_in': 29.65, 'precip_mm': 1.47, 'precip_in': 0.06, 'humidity': 80, 'cloud': 86, 'feelslike_c': 22.0, 'feelslike_f': 71.6, 'windchill_c': 25.4, 'windchill_f': 77.6, 'heatindex_c': 27.5, 'heatindex_f': 81.6, 'dewpoint_c': 21.6, 'dewpoint_f': 70.9, 'vis_km': 9.0, 'vis_miles': 5.0, 'uv': 0.4, 'gust_mph': 6.7, 'gust_kph': 10.8, 'will_it_rain': 1, 'chance_of_rain': 78, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+                "score": 0.9964155
+              },
+              {
+                "title": "Weather - National Center for Hydrometeorological Forecasting",
+                "url": "https://nchmf.gov.vn/KttvsiteE/en-US/2/index.html",
+                "source": "nchmf.gov.vn",
+                "summary": "Marine weather forecast · Medium forecast · Monthly outlook · Seasonal ... Weather for Location - Update 13h - 02/06/2026. Lai Chau. 30°C. Dien Bien. 34°C.",
+                "score": 0.9869795
+              },
+              {
+                "title": "Bản tin thời tiết 19h45 - 01/6/2026 - VTV.vn",
+                "url": "https://vtv.vn/video/ban-tin-thoi-tiet-19h45-01-6-2026-108694253.htm",
+                "source": "vtv.vn",
+                "summary": "Current Time0:00. /. Duration0:00. Bản tin thời tiết. Bản tin thời tiết 19h45 ... Điểm báo - 02/6/2026 · Xã hội 03:08. 15 giờ trước. Bản tin thời tiết 5h30",
+                "score": 0.9623913
+              }
+            ],
+            "source": "Tavily Web Search (Fallback)"
+          }
+        },
+        {
+          "tool": "weather_by_region",
+          "args": {
+            "region": "Nha Trang"
+          },
+          "result": {
+            "tool": "weather_by_region",
+            "region": "Nha Trang",
+            "temperature": "N/A",
+            "condition": "{'location': {'name': 'Nha Trang', 'region': '', 'country': 'Vietnam', 'lat': 12.25, 'lon': 109.1833, 'tz_id': 'Asia/Ho_Chi_Minh', 'localtime_epoch': 1780392238, 'localtime': '2026-06-02 16:23'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 16:00', 'temp_c': 26.7, 'temp_f': 80.1, 'is_day': 1, 'condition': {'text': 'Light rain shower', 'icon': '//cdn.weatherapi.com/weather/64x64/day/353.png', 'code': 1240}, 'wind_mph': 2.9, 'wind_kph': 4.7, 'wind_degree': 140, 'wind_dir': 'SE', 'pressure_mb': 1006.0, 'pressure_in': 29.71, 'precip_mm': 0.3, 'precip_in': 0.01, 'humidity': 80, 'cloud': 85, 'feelslike_c': 28.3, 'feelslike_f': 82.9, 'windchill_c': 26.8, 'windchill_f': 80.2, 'heatindex_c': 29.9, 'heatindex_f': 85.7, 'dewpoint_c': 23.1, 'dewpoint_f': 73.6, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 0.3, 'gust_mph': 4.3, 'gust_kph': 6.9, 'will_it_rain': 1, 'chance_of_rain': 73, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+            "web_search_results": [
+              {
+                "title": "Weather in Nha Trang",
+                "url": "https://www.weatherapi.com/",
+                "source": "weatherapi.com",
+                "summary": "{'location': {'name': 'Nha Trang', 'region': '', 'country': 'Vietnam', 'lat': 12.25, 'lon': 109.1833, 'tz_id': 'Asia/Ho_Chi_Minh', 'localtime_epoch': 1780392238, 'localtime': '2026-06-02 16:23'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 16:00', 'temp_c': 26.7, 'temp_f': 80.1, 'is_day': 1, 'condition': {'text': 'Light rain shower', 'icon': '//cdn.weatherapi.com/weather/64x64/day/353.png', 'code': 1240}, 'wind_mph': 2.9, 'wind_kph': 4.7, 'wind_degree': 140, 'wind_dir': 'SE', 'pressure_mb': 1006.0, 'pressure_in': 29.71, 'precip_mm': 0.3, 'precip_in': 0.01, 'humidity': 80, 'cloud': 85, 'feelslike_c': 28.3, 'feelslike_f': 82.9, 'windchill_c': 26.8, 'windchill_f': 80.2, 'heatindex_c': 29.9, 'heatindex_f': 85.7, 'dewpoint_c': 23.1, 'dewpoint_f': 73.6, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 0.3, 'gust_mph': 4.3, 'gust_kph': 6.9, 'will_it_rain': 1, 'chance_of_rain': 73, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+                "score": 0.439858
+              },
+              {
+                "title": "Extreme heat and possible storms loom over Vietnam in June",
+                "url": "https://vietnamnet.vn/en/extreme-heat-and-possible-storms-loom-over-vietnam-in-june-2521942.html",
+                "source": "vietnamnet.vn",
+                "summary": "Southern Vietnam also recorded three periods of widespread heat from May 1-3, May 7-17 and May 22-26, with temperatures commonly reaching 35°C to 38°C.",
+                "score": 0.013325147
+              },
+              {
+                "title": "In early 2027, construction will begin on the expansion of 15 North ...",
+                "url": "https://www.vietnam.vn/en/dau-nam-2027-khoi-cong-mo-rong-15-du-an-cao-toc-bac-nam-phia-dong",
+                "source": "vietnam.vn",
+                "summary": "In early 2027, construction will begin on the expansion of 15 North-South Expressway projects in the East. (Chinhphu.vn) - Minister of Construction Tran",
+                "score": 0.00019335657
+              }
+            ],
+            "source": "Tavily Web Search (Fallback)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G07_weather_multiturn_clarify",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "weather_multiturn_clarify",
+        "difficulty": "medium",
+        "what_it_tests": "Check if agent correctly extracts the region and calls weather_by_region after clarification"
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Thời tiết hôm nay thế nào?"
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn muốn xem thời tiết ở khu vực hay thành phố nào?"
+        },
+        {
+          "role": "user",
+          "content": "Xem ở TP.HCM giúp mình."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "TP.HCM"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "TP.HCM"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "missing_info",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "weather_by_region",
+          "args": {
+            "region": "TP.HCM"
+          },
+          "result": {
+            "tool": "weather_by_region",
+            "region": "TP.HCM",
+            "temperature": "N/A",
+            "condition": "{'location': {'name': 'Ho Chi Minh City', 'region': '', 'country': 'Vietnam', 'lat': 10.75, 'lon': 106.6667, 'tz_id': 'Asia/Ho_Chi_Minh', 'localtime_epoch': 1780392236, 'localtime': '2026-06-02 16:23'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 16:00', 'temp_c': 26.4, 'temp_f': 79.5, 'is_day': 1, 'condition': {'text': 'Light rain shower', 'icon': '//cdn.weatherapi.com/weather/64x64/day/353.png', 'code': 1240}, 'wind_mph': 12.1, 'wind_kph': 19.4, 'wind_degree': 226, 'wind_dir': 'SW', 'pressure_mb': 1006.0, 'pressure_in': 29.71, 'precip_mm': 1.0, 'precip_in': 0.04, 'humidity': 87, 'cloud': 62, 'feelslike_c': 25.8, 'feelslike_f': 78.4, 'windchill_c': 26.4, 'windchill_f': 79.5, 'heatindex_c': 30.0, 'heatindex_f': 85.9, 'dewpoint_c': 24.1, 'dewpoint_f': 75.3, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 0.6, 'gust_mph': 18.5, 'gust_kph': 29.8, 'will_it_rain': 1, 'chance_of_rain': 73, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+            "web_search_results": [
+              {
+                "title": "Weather in Ho Chi Minh City, Vietnam",
+                "url": "https://www.weatherapi.com/",
+                "source": "weatherapi.com",
+                "summary": "{'location': {'name': 'Ho Chi Minh City', 'region': '', 'country': 'Vietnam', 'lat': 10.75, 'lon': 106.6667, 'tz_id': 'Asia/Ho_Chi_Minh', 'localtime_epoch': 1780392236, 'localtime': '2026-06-02 16:23'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 16:00', 'temp_c': 26.4, 'temp_f': 79.5, 'is_day': 1, 'condition': {'text': 'Light rain shower', 'icon': '//cdn.weatherapi.com/weather/64x64/day/353.png', 'code': 1240}, 'wind_mph': 12.1, 'wind_kph': 19.4, 'wind_degree': 226, 'wind_dir': 'SW', 'pressure_mb': 1006.0, 'pressure_in': 29.71, 'precip_mm': 1.0, 'precip_in': 0.04, 'humidity': 87, 'cloud': 62, 'feelslike_c': 25.8, 'feelslike_f': 78.4, 'windchill_c': 26.4, 'windchill_f': 79.5, 'heatindex_c': 30.0, 'heatindex_f': 85.9, 'dewpoint_c': 24.1, 'dewpoint_f': 75.3, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 0.6, 'gust_mph': 18.5, 'gust_kph': 29.8, 'will_it_rain': 1, 'chance_of_rain': 73, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+                "score": 0.8725968
+              },
+              {
+                "title": "Weather - National Center for Hydrometeorological Forecasting",
+                "url": "https://nchmf.gov.vn/KttvsiteE/en-US/2/index.html",
+                "source": "nchmf.gov.vn",
+                "summary": "Ho Chi Minh City. 30°C. Vung Tau. 31°C. Long An. 31°C. Tien Giang. 31°C. Vinh Long ... Weather - Day and night 02/06/2026. Satellite · Radar · Model · Rain map.",
+                "score": 0.8380581
+              },
+              {
+                "title": "Weather forecast for An Giang province on June 2nd, 2026",
+                "url": "https://www.vietnam.vn/en/du-bao-thoi-tiet-tinh-an-giang-ngay-02-06-2026",
+                "source": "vietnam.vn",
+                "summary": "Weather forecast for An Giang province on June 2nd, 2026.",
+                "score": 0.40098447
+              }
+            ],
+            "source": "Tavily Web Search (Fallback)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G08_trend_analyzer_multiturn_carryover",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "trend_analyzer_carryover",
+        "difficulty": "hard",
+        "what_it_tests": "Carry over search results context to trend_analyzer"
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Tìm kiếm tin tức công nghệ mới nhất hôm nay trên web"
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi đã tìm thấy một số tin tức công nghệ mới nhất hôm nay trên web."
+        },
+        {
+          "role": "user",
+          "content": "Phân tích xu hướng từ các tin tức đó đi"
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "trend_analyzer",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "trend_analyzer",
+            "args": {
+              "data": {}
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "trend_analyzer",
+          "args": {
+            "data": {}
+          },
+          "result": {
+            "tool": "trend_analyzer",
+            "trend_analysis": {
+              "trending_topics": [],
+              "keywords": [],
+              "sentiment": "Neutral",
+              "sentiment_score": {
+                "positive": 0,
+                "negative": 0
+              },
+              "summary": "No data available to analyze trends."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "G09_weather_multiturn_correction",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "weather_multiturn_correction",
+        "difficulty": "medium",
+        "what_it_tests": "Check if agent correctly corrects the region from Hà Nội to Hải Phòng"
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Thời tiết ở Hà Nội hôm nay thế nào?"
+        },
+        {
+          "role": "assistant",
+          "content": "Hôm nay Hà Nội có mưa nhỏ, nhiệt độ khoảng 28 độ C."
+        },
+        {
+          "role": "user",
+          "content": "À không, mình nhầm, xem thời tiết ở Hải Phòng nhé."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "Hải Phòng"
+            }
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "Hải Phòng"
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_arg_value",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "weather_by_region",
+          "args": {
+            "region": "Hải Phòng"
+          },
+          "result": {
+            "tool": "weather_by_region",
+            "region": "Hải Phòng",
+            "temperature": "N/A",
+            "condition": "{'location': {'name': 'Hải Phòng', 'region': '', 'country': 'Vietnam', 'lat': 20.8561, 'lon': 106.6822, 'tz_id': 'Asia/Bangkok', 'localtime_epoch': 1780392250, 'localtime': '2026-06-02 16:24'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 16:00', 'temp_c': 32.7, 'temp_f': 90.9, 'is_day': 1, 'condition': {'text': 'Sunny', 'icon': '//cdn.weatherapi.com/weather/64x64/day/113.png', 'code': 1000}, 'wind_mph': 12.1, 'wind_kph': 19.4, 'wind_degree': 150, 'wind_dir': 'SSE', 'pressure_mb': 1003.0, 'pressure_in': 29.61, 'precip_mm': 0.0, 'precip_in': 0.0, 'humidity': 59, 'cloud': 8, 'feelslike_c': 38.5, 'feelslike_f': 101.3, 'windchill_c': 32.7, 'windchill_f': 90.9, 'heatindex_c': 38.7, 'heatindex_f': 101.7, 'dewpoint_c': 23.7, 'dewpoint_f': 74.7, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 2.5, 'gust_mph': 13.9, 'gust_kph': 22.4, 'will_it_rain': 0, 'chance_of_rain': 1, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+            "web_search_results": [
+              {
+                "title": "Weather in Hải Phòng",
+                "url": "https://www.weatherapi.com/",
+                "source": "weatherapi.com",
+                "summary": "{'location': {'name': 'Hải Phòng', 'region': '', 'country': 'Vietnam', 'lat': 20.8561, 'lon': 106.6822, 'tz_id': 'Asia/Bangkok', 'localtime_epoch': 1780392250, 'localtime': '2026-06-02 16:24'}, 'current': {'last_updated_epoch': 1780390800, 'last_updated': '2026-06-02 16:00', 'temp_c': 32.7, 'temp_f': 90.9, 'is_day': 1, 'condition': {'text': 'Sunny', 'icon': '//cdn.weatherapi.com/weather/64x64/day/113.png', 'code': 1000}, 'wind_mph': 12.1, 'wind_kph': 19.4, 'wind_degree': 150, 'wind_dir': 'SSE', 'pressure_mb': 1003.0, 'pressure_in': 29.61, 'precip_mm': 0.0, 'precip_in': 0.0, 'humidity': 59, 'cloud': 8, 'feelslike_c': 38.5, 'feelslike_f': 101.3, 'windchill_c': 32.7, 'windchill_f': 90.9, 'heatindex_c': 38.7, 'heatindex_f': 101.7, 'dewpoint_c': 23.7, 'dewpoint_f': 74.7, 'vis_km': 10.0, 'vis_miles': 6.0, 'uv': 2.5, 'gust_mph': 13.9, 'gust_kph': 22.4, 'will_it_rain': 0, 'chance_of_rain': 1, 'will_it_snow': 0, 'chance_of_snow': 0}}",
+                "score": 0.9996523
+              },
+              {
+                "title": "Weather - National Center for Hydrometeorological Forecasting",
+                "url": "https://nchmf.gov.vn/KttvsiteE/en-US/2/index.html",
+                "source": "nchmf.gov.vn",
+                "summary": "Weather for Location - Update 13h - 02/06/2026. Lai Chau. 30°C. Dien Bien ... Hai Phong. 33°C. Ha Noi. 35°C. Hai Duong. 35°C. Hung Yen. 35°C. Nam Dinh. 35°C. Phu",
+                "score": 0.99949265
+              },
+              {
+                "title": "Dự báo thời tiết tỉnh An Giang ngày 02/06/2026",
+                "url": "https://baoangiang.com.vn/du-bao-thoi-tiet-tinh-an-giang-ngay-02-06-2026-a487438.html",
+                "source": "baoangiang.com.vn",
+                "summary": "Dự báo thời tiết tỉnh An Giang ngày 02/06/2026.",
+                "score": 0.83004373
+              }
+            ],
+            "source": "Tavily Web Search (Fallback)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "G10_trend_analyzer_multiturn_social",
+      "phase": "B",
+      "suite": "group",
+      "case_suite": "group",
+      "is_multiturn": true,
+      "metadata": {
+        "skill": "trend_analyzer_multiturn_social",
+        "difficulty": "hard",
+        "what_it_tests": "Analyze social search results about du lịch Sa Pa for trends and sentiment"
+      },
+      "input": [
+        {
+          "role": "user",
+          "content": "Mọi người trên Twitter đang nói gì về du lịch Sa Pa?"
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi đã tìm thấy một số bài đăng nói về du lịch Sa Pa trên Twitter."
+        },
+        {
+          "role": "user",
+          "content": "Hãy phân tích xu hướng, từ khóa và sentiment của các bài đăng này."
+        }
+      ],
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "trend_analyzer",
+            "args": {}
+          }
+        ]
+      },
+      "result": {
+        "passed": true,
+        "routing_correct": true,
+        "args_correct": true,
+        "actual_tool_calls": [
+          {
+            "name": "trend_analyzer",
+            "args": {
+              "data": {}
+            }
+          }
+        ],
+        "actual_text": null,
+        "case_failure_type": "wrong_tool",
+        "observed_mismatch": null,
+        "failure_type": null,
+        "failures": []
+      },
+      "tool_results": [
+        {
+          "tool": "trend_analyzer",
+          "args": {
+            "data": {}
+          },
+          "result": {
+            "tool": "trend_analyzer",
+            "trend_analysis": {
+              "trending_topics": [],
+              "keywords": [],
+              "sentiment": "Neutral",
+              "sentiment_score": {
+                "positive": 0,
+                "negative": 0
+              },
+              "summary": "No data available to analyze trends."
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
