@@ -17,6 +17,9 @@ from .policy.tool import search_company_policy
 from .social_search.tool import search_tweets
 from .send.tool import send_telegram
 from .lookup.tool import web_search
+from .source_check.tool import check_sources
+from .weather_by_region.tool import get_weather_by_region
+from .trend_analyzer.tool import analyze_trends
 
 
 # NOTE (starter_v0): tool names here are intentionally vague. These keys are the
@@ -35,6 +38,9 @@ TOOL_FUNCTIONS = {
     "policy": search_company_policy,
     "papers": arxiv_search,
     "paper_text": get_arxiv_paper_text,
+    "source_check": check_sources,
+    "weather_by_region": get_weather_by_region,
+    "trend_analyzer": analyze_trends,
 }
 
 
