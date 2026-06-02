@@ -80,6 +80,212 @@
         "difficulty": "hard",
         "what_it_tests": "Check if agent calls trend_analyzer for analyzing tweets context"
       }
+    },
+    {
+      "id": "G04_weather_english_routing",
+      "phase": "B",
+      "suite": "group",
+      "query": "What is the weather like in New York today?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "New York"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "weather_routing_english",
+        "difficulty": "easy",
+        "what_it_tests": "Check if agent calls weather_by_region for a specified location in English"
+      }
+    },
+    {
+      "id": "G05_trend_analyzer_direct_data",
+      "phase": "B",
+      "suite": "group",
+      "query": "Hãy phân tích xu hướng và sentiment của bài viết sau: 'Trí tuệ nhân tạo đang thay đổi thế giới. Đây là một cơ hội tuyệt vời.'",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "trend_analyzer",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "trend_analyzer_direct_data",
+        "difficulty": "medium",
+        "what_it_tests": "Check if agent calls trend_analyzer when data is provided directly in the query"
+      }
+    },
+    {
+      "id": "G06_weather_parallel",
+      "phase": "B",
+      "suite": "group",
+      "query": "Thời tiết ở Đà Nẵng và Nha Trang hôm nay ra sao?",
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "Đà Nẵng"
+            }
+          },
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "Nha Trang"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "weather_parallel_routing",
+        "difficulty": "hard",
+        "what_it_tests": "Check if agent calls weather_by_region in parallel for multiple locations"
+      }
+    },
+    {
+      "id": "G07_weather_multiturn_clarify",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Thời tiết hôm nay thế nào?"
+        },
+        {
+          "role": "assistant",
+          "content": "Bạn muốn xem thời tiết ở khu vực hay thành phố nào?"
+        },
+        {
+          "role": "user",
+          "content": "Xem ở TP.HCM giúp mình."
+        }
+      ],
+      "failure_type": "missing_info",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "TP.HCM"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "weather_multiturn_clarify",
+        "difficulty": "medium",
+        "what_it_tests": "Check if agent correctly extracts the region and calls weather_by_region after clarification"
+      }
+    },
+    {
+      "id": "G08_trend_analyzer_multiturn_carryover",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Tìm kiếm tin tức công nghệ mới nhất hôm nay trên web"
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi đã tìm thấy một số tin tức công nghệ mới nhất hôm nay trên web."
+        },
+        {
+          "role": "user",
+          "content": "Phân tích xu hướng từ các tin tức đó đi"
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "trend_analyzer",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "trend_analyzer_carryover",
+        "difficulty": "hard",
+        "what_it_tests": "Carry over search results context to trend_analyzer"
+      }
+    },
+    {
+      "id": "G09_weather_multiturn_correction",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Thời tiết ở Hà Nội hôm nay thế nào?"
+        },
+        {
+          "role": "assistant",
+          "content": "Hôm nay Hà Nội có mưa nhỏ, nhiệt độ khoảng 28 độ C."
+        },
+        {
+          "role": "user",
+          "content": "À không, mình nhầm, xem thời tiết ở Hải Phòng nhé."
+        }
+      ],
+      "failure_type": "wrong_arg_value",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "weather_by_region",
+            "args": {
+              "region": "Hải Phòng"
+            }
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "weather_multiturn_correction",
+        "difficulty": "medium",
+        "what_it_tests": "Check if agent correctly corrects the region from Hà Nội to Hải Phòng"
+      }
+    },
+    {
+      "id": "G10_trend_analyzer_multiturn_social",
+      "phase": "B",
+      "suite": "group",
+      "turns": [
+        {
+          "role": "user",
+          "content": "Mọi người trên Twitter đang nói gì về du lịch Sa Pa?"
+        },
+        {
+          "role": "assistant",
+          "content": "Tôi đã tìm thấy một số bài đăng nói về du lịch Sa Pa trên Twitter."
+        },
+        {
+          "role": "user",
+          "content": "Hãy phân tích xu hướng, từ khóa và sentiment của các bài đăng này."
+        }
+      ],
+      "failure_type": "wrong_tool",
+      "expect": {
+        "tool_calls": [
+          {
+            "name": "trend_analyzer",
+            "args": {}
+          }
+        ]
+      },
+      "metadata": {
+        "skill": "trend_analyzer_multiturn_social",
+        "difficulty": "hard",
+        "what_it_tests": "Analyze social search results about du lịch Sa Pa for trends and sentiment"
+      }
     }
   ]
 }
