@@ -105,7 +105,7 @@ export function ChatPanelInteractive({
                       content: statusStr === "completed" ? `Executed ${toolName} successfully.` : `Tool failed: ${resVal.message || "Unknown error"}`,
                       input: args,
                       output: resVal,
-                      status: statusStr,
+                      status: "completed",
                       durationMs: 150,
                     });
                   });
@@ -394,10 +394,14 @@ export function ChatPanelInteractive({
     }
 
     try {
+      const history = messages.slice(-10).map((message) => ({
+        role: message.role,
+        content: message.content,
+      }));
       const response = await fetch("/api/diagnose", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session_id: activeSessionId, query: userText }),
+        body: JSON.stringify({ session_id: activeSessionId, query: userText, history }),
       });
       const data = await response.json() as DiagnoseResponse & {
         error_code?: string;

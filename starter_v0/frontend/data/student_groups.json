@@ -1,0 +1,30 @@
+[
+  {
+    "group_name": "Needs Foundation",
+    "students": [
+      { "student_id": "STU001", "name": "Nguyễn Văn A" },
+      { "student_id": "STU002", "name": "Trần Thị B" },
+      { "student_id": "STU003", "name": "Lê Minh C" }
+    ],
+    "reason": "Học viên đạt điểm dưới 50% trong bài kiểm tra chẩn đoán, chưa nắm vững các khái niệm cơ bản về AI Agent.",
+    "weak_concepts": ["agentic_loops", "reasoning"]
+  },
+  {
+    "group_name": "Needs Practice",
+    "students": [
+      { "student_id": "STU004", "name": "Phạm Thị D" },
+      { "student_id": "STU005", "name": "Hoàng Văn E" }
+    ],
+    "reason": "Học viên đạt điểm 50-75%, hiểu được các khái niệm cơ bản nhưng cần thực hành thêm các bài tập và project nhỏ.",
+    "weak_concepts": ["agentic_loops"]
+  },
+  {
+    "group_name": "Ready for Advanced",
+    "students": [
+      { "student_id": "STU006", "name": "Ngô Quốc F" },
+      { "student_id": "STU007", "name": "Vũ Đông G" }
+    ],
+    "reason": "Học viên đạt điểm trên 75%, làm chủ tốt các khái niệm cốt lõi, sẵn sàng cho các bài tập lớn và dự án nâng cao.",
+    "weak_concepts": []
+  }
+]
