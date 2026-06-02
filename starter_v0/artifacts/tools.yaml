@@ -239,3 +239,9 @@ tools:
           description: "The collected data payload (from lookup, fetch, timeline, or social_search) to analyze."
       required: [data]
 
+  - name: list_tools
+    description: "List all active registered tools, their descriptions, parameters, and metadata. Use this when you want to discover the available tools in the system."
+    parameters:
+      type: object
+      properties: {}
+

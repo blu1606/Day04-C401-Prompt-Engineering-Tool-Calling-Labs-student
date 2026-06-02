@@ -20,6 +20,7 @@ from .lookup.tool import web_search
 from .source_check.tool import check_sources
 from .weather_by_region.tool import get_weather_by_region
 from .trend_analyzer.tool import analyze_trends
+from .list_tools.tool import get_registered_tools
 
 
 # NOTE (starter_v0): tool names here are intentionally vague. These keys are the
@@ -41,6 +42,7 @@ TOOL_FUNCTIONS = {
     "source_check": check_sources,
     "weather_by_region": get_weather_by_region,
     "trend_analyzer": analyze_trends,
+    "list_tools": get_registered_tools,
 }
 
 
